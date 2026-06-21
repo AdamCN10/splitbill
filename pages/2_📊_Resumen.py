@@ -10,12 +10,12 @@ st.title("📊 Resumen final")
 if not st.session_state.people:
     st.warning("Primero añade personas en la página de **Inicio**.")
     st.stop()
-if not st.session_state.items:
+if not st.session_state.gastos:
     st.warning("Todavía no has añadido ningún gasto en la página de **Gastos**.")
     st.stop()
 
-balances = compute_balances(st.session_state.people, st.session_state.items)
-total = total_bill(st.session_state.items)
+balances = compute_balances(st.session_state.people, st.session_state.gastos)
+total = total_bill(st.session_state.gastos)
 suma_individual = sum(balances.values())
 
 st.subheader("💰 Cuánto debe pagar cada persona")
@@ -70,7 +70,7 @@ if pagador != "-- Selecciona --":
 st.divider()
 if st.button("🔄 Empezar de nuevo (borrar todo)"):
     st.session_state.people = []
-    st.session_state.items = []
+    st.session_state.gastos = []
     st.session_state.next_id = 1
     st.session_state.pagador = None
     st.rerun()

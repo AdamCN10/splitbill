@@ -43,7 +43,7 @@ with st.form("add_item_form", clear_on_submit=True):
         elif not participantes:
             st.warning("Selecciona al menos una persona.")
         else:
-            st.session_state.items.append(
+            st.session_state.gastos.append(
                 {
                     "id": st.session_state.next_id,
                     "nombre": nombre.strip(),
@@ -57,24 +57,24 @@ with st.form("add_item_form", clear_on_submit=True):
 
 st.divider()
 
-if st.session_state.items:
+if st.session_state.gastos:
     st.subheader("Gastos añadidos")
-    df = items_to_dataframe(st.session_state.items)
+    df = items_to_dataframe(st.session_state.gastos)
     st.dataframe(df, use_container_width=True, hide_index=True)
 
-    total = sum(it["precio"] for it in st.session_state.items)
+    total = sum(it["precio"] for it in st.session_state.gastos)
     st.metric("💶 Total de la cuenta", f"{total:.2f} €")
 
     with st.expander("🗑️ Eliminar un gasto"):
-        for it in st.session_state.items:
+        for it in st.session_state.gastos:
             c1, c2 = st.columns([5, 1])
             c1.write(
                 f"**{it['nombre']}** — {it['precio']:.2f} € "
                 f"({', '.join(it['participantes'])})"
             )
             if c2.button("Eliminar", key=f"del_item_{it['id']}"):
-                st.session_state.items = [
-                    x for x in st.session_state.items if x["id"] != it["id"]
+                st.session_state.gastos = [
+                    x for x in st.session_state.gastos if x["id"] != it["id"]
                 ]
                 st.rerun()
 

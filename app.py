@@ -53,7 +53,7 @@ if st.session_state.people:
         if c2.button("🗑️", key=f"del_person_{i}"):
             st.session_state.people.remove(persona)
             # Si la quitamos, también la quitamos de los gastos donde participaba
-            for it in st.session_state.items:
+            for it in st.session_state.gastos:
                 if persona in it["participantes"]:
                     it["participantes"].remove(persona)
             if st.session_state.pagador == persona:

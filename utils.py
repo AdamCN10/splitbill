@@ -14,15 +14,15 @@ def init_state(st):
     """Inicializa las claves necesarias en st.session_state si no existen."""
     if "people" not in st.session_state:
         st.session_state.people = []
-    if "items" not in st.session_state:
-        st.session_state.items = []  # lista de dicts, ver estructura abajo
+    if "gastos" not in st.session_state:
+        st.session_state.gastos = []  # lista de dicts, ver estructura abajo
     if "next_id" not in st.session_state:
         st.session_state.next_id = 1
     if "pagador" not in st.session_state:
         st.session_state.pagador = None
 
 
-# Estructura de cada elemento en st.session_state.items:
+# Estructura de cada elemento en st.session_state.gastos:
 # {
 #     "id": int,
 #     "nombre": str,
