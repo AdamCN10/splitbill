@@ -14,7 +14,7 @@ if len(st.session_state.people) == 0:
 st.markdown("Añade cada producto o plato, su precio, y quién lo paga.")
 
 with st.form("add_item_form", clear_on_submit=True):
-    nombre = st.text_input("Concepto", placeholder="Ej: Bravas, Pizza margarita...")
+    nombre = st.text_input("Concepto", placeholder="Ej: Bravas, Pizza...")
     precio = st.number_input("Precio (€)", min_value=0.0, step=0.5, format="%.2f")
     tipo = st.radio(
         "¿Cómo se paga?",

@@ -30,7 +30,7 @@ with st.form("add_person_form", clear_on_submit=True):
         nombre = st.text_input(
             "Nombre de la persona",
             label_visibility="collapsed",
-            placeholder="Ej: Marta",
+            placeholder="Ej: Adam",
         )
     with col2:
         submitted = st.form_submit_button("Añadir", use_container_width=True)
